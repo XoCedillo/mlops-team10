@@ -60,3 +60,88 @@ Hotel booking demand analysis
 
 --------
 
+## Setup
+
+To install Conda, you can choose between two primary distributions: Anaconda and Miniconda. Here are the steps for installing each:
+
+### 1. **Installing Anaconda**
+
+Anaconda is a comprehensive distribution that includes Conda, Python, and many pre-installed packages for data science and machine learning.
+
+#### **Windows, macOS, and Linux**
+
+1. **Download Anaconda:**
+   - Go to the [Anaconda Distribution](https://www.anaconda.com/products/distribution#download-section) download page.
+   - Select your operating system (Windows, macOS, or Linux).
+   - Download the installer for Python 3.x.
+
+2. **Run the Installer:**
+   - **Windows:** Double-click the downloaded `.exe` file and follow the installation instructions.
+   - **macOS:** Open the downloaded `.pkg` file and follow the installation instructions.
+   - **Linux:** Open a terminal, navigate to the directory containing the downloaded `.sh` file, and run:
+     ```bash
+     bash Anaconda3-2023.03-Linux-x86_64.sh
+     ```
+   - Follow the on-screen instructions to complete the installation.
+
+3. **Verify Installation:**
+   - Open a new terminal (or Anaconda Prompt on Windows) and run:
+     ```bash
+     conda --version
+     ```
+   - This should display the Conda version, confirming the installation was successful.
+
+### Post-Installation Steps
+
+1. **Initialize Conda (if needed):**
+   - On some systems, you may need to initialize Conda to set up the necessary shell configuration. Run:
+     ```bash
+     conda init
+     ```
+   - Restart your terminal or run `source ~/.bashrc` (or equivalent for your shell) to apply the changes.
+
+2. **Update Conda:**
+   - It’s a good practice to update Conda to the latest version:
+     ```bash
+     conda update conda
+     ```
+
+Now you have Conda installed and ready to use. You can create environments, install packages, and manage your Python projects efficiently.
+
+## Install dependencies
+
+To install dependencies using Conda with the `environment.yml` file, follow these steps:
+
+### 1. **Create the Conda Environment**
+
+Use the `conda env create` command to create the environment from the `environment.yml` file. Open your terminal or command prompt, navigate to the directory containing the `environment.yml` file, and run:
+
+```bash
+conda env create -f environment.yml
+```
+
+### 2. **Activate the Conda Environment**
+
+After creating the environment, activate it with the `conda activate` command:
+
+```bash
+conda activate mlops-bootcamp-team10
+```
+
+### 3. **Verify the Environment**
+
+To ensure that the environment was created correctly with all specified dependencies, you can list the installed packages:
+
+```bash
+conda list
+```
+
+### Updating an Existing Environment
+
+If you need to update an existing environment with new dependencies specified in an updated `environment.yml` file, use:
+
+```bash
+conda env update -f environment.yml
+```
+
+By following these steps, you can efficiently manage your Conda environments and ensure all necessary dependencies are installed as specified.

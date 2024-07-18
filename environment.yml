@@ -1,5 +1,6 @@
 name: mlops-bootcamp-team10
 channels:
+  - defaults
   - conda-forge
 dependencies:
   - python=3.11
@@ -18,6 +19,6 @@ dependencies:
   - pandas
   - scikit-learn
   - pip:
-    - python-dotenv
-    - mkdocs
-    - -e .
+      - python-dotenv
+      - mkdocs
+      - -e .
