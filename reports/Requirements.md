@@ -1,6 +1,3 @@
-Here is the translation of the text into English:
-
----
 
 ### Barrokas Inn Hotel and Restaurant
 
