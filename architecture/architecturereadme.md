@@ -4,7 +4,7 @@ This repository provides an overview of the data pipeline architecture for proce
 
 ## Architecture Overview
 
-![Architecture Diagram](architecture/architecture.jpeg)
+![Architecture Diagram](architecture.jpeg)
 
 ### Components
 
@@ -58,7 +58,7 @@ To deploy this architecture, follow the steps below:
 
 1. *Clone the Repository*
    sh
-   git clone https://github.com/yourusername/yourrepository.git
+   git clone https://github.com/XoCedillo/mlops-team10
    cd yourrepository
    
 
@@ -91,3 +91,5 @@ Feel free to contribute to this repository by submitting pull requests or openin
 ### License
 
 This project is licensed under the MIT License. See the LICENSE file for more details.
+
+[def]: architecture/architecture.jpeg
