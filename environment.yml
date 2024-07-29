@@ -1,6 +1,5 @@
 name: mlops-bootcamp-team10
 channels:
-  - defaults
   - conda-forge
 dependencies:
   - python=3.11
@@ -12,12 +11,21 @@ dependencies:
   - loguru
   - tqdm
   - ipython
+  - ipywidgets
+  - jupyter
   - jupyterlab
   - matplotlib
   - notebook
   - numpy
   - pandas
+  - plotly
+  - python-kaleido
   - scikit-learn
+  - seaborn
+  - scipy
+  - statsmodels
+  - ydata-profiling
+  - yellowbrick
   - pip:
       - python-dotenv
       - mkdocs
