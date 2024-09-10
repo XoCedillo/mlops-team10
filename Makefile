@@ -37,8 +37,23 @@ lint:
 format:
 	black --config pyproject.toml mlops_bootcamp_team10
 
+## Setup Data remote storage for DVC
+.PHONY: setup_dvc_remote
+setup_dvc_remote:
+	dotenv -f .env run -- echo "Running in environment: $$DVC_REMOTE_URL"
+	# dvc remote modify mlops-team10-dvc url ${DVC_REMOTE_URL}
+	# dvc remote modify mlops-team10-dvc access_key_id ${AWS_ACCESS_KEY_ID}
+	# dvc remote modify mlops-team10-dvc secret_access_key ${AWS_SECRET_ACCESS_KEY}
 
-
+## Download Data from storage system
+.PHONY: sync_data_down
+sync_data_down:
+	dvc pull
+	
+## Upload Data to storage system
+.PHONY: sync_data_up
+sync_data_up:
+	dvc push
 
 ## Set up python interpreter environment
 .PHONY: create_environment

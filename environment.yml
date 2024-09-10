@@ -26,6 +26,8 @@ dependencies:
   - statsmodels
   - ydata-profiling
   - yellowbrick
+  - dvc
+  - dvc-s3
   - pip:
       - python-dotenv
       - mkdocs
