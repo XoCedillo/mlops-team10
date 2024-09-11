@@ -15,6 +15,7 @@ dependencies:
   - jupyter
   - jupyterlab
   - matplotlib
+  - mlflow
   - notebook
   - numpy
   - pandas
