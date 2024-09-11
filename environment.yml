@@ -29,6 +29,8 @@ dependencies:
   - yellowbrick
   - dvc
   - dvc-s3
+  - typing
+  - xgboost
   - pip:
       - python-dotenv
       - mkdocs

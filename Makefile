@@ -65,7 +65,7 @@ create_environment:
 ## Make Dataset
 .PHONY: data
 data: requirements
-	$(PYTHON_INTERPRETER) mlops_bootcamp_team10/data/make_dataset.py
+	$(PYTHON_INTERPRETER) mlops_bootcamp_team10/dataset.py
 
 
 #################################################################################
