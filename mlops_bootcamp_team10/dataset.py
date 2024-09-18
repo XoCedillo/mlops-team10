@@ -6,7 +6,14 @@ import typer
 from loguru import logger
 from tqdm import tqdm
 
+from typing import List, Callable, Union
+
+# Standard libraries
+import pandas as pd
+import numpy as np
+
 from mlops_bootcamp_team10.config import PROCESSED_DATA_DIR, RAW_DATA_DIR
+from mlops_bootcamp_team10.data import cleaning
 
 app = typer.Typer()
 
@@ -34,7 +41,7 @@ def downsample(df: pd.DataFrame):
 def main(
     input_path: Path = RAW_DATA_DIR / "hotel_bookings.csv",
     output_path: Path = PROCESSED_DATA_DIR / "hotel_bookings.csv",
-    # funcs: List[Callable[pd.DataFrame] pd.DataFrame] = None,
+    funcs: List[str] = ["downsampling"],
 ):
     """
     Main Function
@@ -42,7 +49,9 @@ def main(
     output_path: Output data path based PROCESSED_DATA_DIR config.py
     funcs: Scripts to download or generate data
     """
-    funcs = [downsample]
+    ops = {
+        "downsampling": cleaning.downsample,
+    }
 
     logger.info("Processing dataset...")
     logger.info(f"Input path {input_path}")
@@ -50,7 +59,7 @@ def main(
     # Perform cleaning of dataset based on transformations param
     processed_df = pd.read_csv(input_path)
     for func in tqdm(funcs):
-        processed_df = func(processed_df)
+        processed_df = ops[func](processed_df, logger=logger)
     logger.success("Processing dataset complete.")
 
     # Saving processed dataset

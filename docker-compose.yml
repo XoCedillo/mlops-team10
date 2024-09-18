@@ -1,7 +1,7 @@
 version: '3.8'
 services:
   api:
-    build: ./mlops_bootcamp_team10/app
+    build: ./mlops_bootcamp_team10/api
     ports:
       - "5050:5050"
 
