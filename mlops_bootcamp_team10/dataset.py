@@ -1,14 +1,10 @@
 from pathlib import Path
 
+# Standard libraries
+import pandas as pd
 import typer
 from loguru import logger
 from tqdm import tqdm
-
-from typing import List, Callable, Union
-
-# Standard libraries
-import pandas as pd
-import numpy as np
 
 from mlops_bootcamp_team10.config import PROCESSED_DATA_DIR, RAW_DATA_DIR
 
