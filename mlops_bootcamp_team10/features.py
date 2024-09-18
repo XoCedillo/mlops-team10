@@ -1,8 +1,6 @@
 from pathlib import Path
 
 import typer
-from loguru import logger
-from tqdm import tqdm
 import pandas as pd
 from sklearn.preprocessing import OneHotEncoder, StandardScaler
 from sklearn.compose import ColumnTransformer
@@ -20,22 +18,21 @@ def main(
     output_path: Path = PROCESSED_DATA_DIR / "features.csv",
     # -----------------------------------------
 ):
-    # ---- REPLACE THIS WITH YOUR OWN CODE ----
-    logger.info("Generating features from dataset...")    
+    """Pre-processes csv before passing it to the training process"""
     # Read the dataset
     hotel_df = pd.read_csv(input_path)
     # Drop variables that add too much dimensionality or don't have enough data
-    hotel_df.drop(columns=['reservation_status_date', 'country', 'company', 'reservation_status'], inplace=True)
+    cols_to_drop = ['reservation_status_date', 'country', 'company', 'reservation_status']
+    hotel_df.drop(columns=cols_to_drop, inplace=True)
     # Handle missing data
     hotel_df['agent'] = hotel_df['agent'].fillna(hotel_df['agent'].median())
     hotel_df['children'] = hotel_df['children'].fillna(hotel_df['babies'].median())
     # Split data into X and y
-    y = hotel_df['is_canceled']
-    X = hotel_df.drop(columns=['is_canceled'])
+    x = hotel_df.drop(columns=['is_canceled'])
 
     # Define categorical and numerical features
-    categorical_features = X.select_dtypes(include=['object']).columns
-    numerical_features = X.select_dtypes(include=['number']).columns
+    categorical_features = x.select_dtypes(include=['object']).columns
+    numerical_features = x.select_dtypes(include=['number']).columns
 
     # Define transformers for each feature type
     categorical_transformer = OneHotEncoder()
@@ -52,7 +49,7 @@ def main(
         ('preprocessor', preprocessor)
     ])
 
-    X_transformed = pipeline.fit_transform(X)
+    x_transformed = pipeline.fit_transform(x)
 
     # Get the column names to apply to new df
     column_names = []
@@ -61,12 +58,12 @@ def main(
             column_names.extend(transformer[1].get_feature_names_out())
         else:
             column_names.extend(transformer[2])
-    
-    X_transformed = pd.DataFrame(X_transformed, columns=column_names)
+
+    x_transformed = pd.DataFrame(x_transformed, columns=column_names)
     # Write transformed data ready for model
-    X_transformed.to_csv(output_path)
-    
-    return X_transformed
+    x_transformed.to_csv(output_path)
+
+    return x_transformed
 
 if __name__ == "__main__":
     app()
