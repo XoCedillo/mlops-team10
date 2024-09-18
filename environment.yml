@@ -15,7 +15,6 @@ dependencies:
   - jupyter
   - jupyterlab
   - matplotlib
-  - mlflow
   - notebook
   - numpy
   - pandas
@@ -27,10 +26,6 @@ dependencies:
   - statsmodels
   - ydata-profiling
   - yellowbrick
-  - dvc
-  - dvc-s3
-  - typing
-  - xgboost
   - pip:
       - python-dotenv
       - mkdocs

@@ -47,7 +47,7 @@ Once Conda is installed, you can create a Conda environment specifically for thi
    conda activate mlops-bootcamp-team10
    ```
 
-Now, your terminal prompt should indicate that you are working within the `mlops-bootcamp-team10` environment.
+Now, your terminal prompt should indicate that you are working within the `mmlops-bootcamp-team10` environment.
 
 
 ## 3. Install Packages

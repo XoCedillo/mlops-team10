@@ -1,5 +1,0 @@
-[core]
-    remote = mlops-team10-dvc
-['remote "mlops-team10-dvc"']
-    url = s3://mlops-team10/dvcstore
-    profile = xo-playground
