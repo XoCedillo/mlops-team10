@@ -6,15 +6,15 @@ import mlflow
 app = FastAPI()
 
 
-@app.on_event("startup")
-def load_model():
+# @app.on_event("startup")
+# def load_model():
 
-    global loaded_model
+#     global loaded_model
 
-    # with open("../../model/model.pickle", "rb") as openfile:
-    #     model1 = pickle.load(openfile)
-    model_uri = ""
-    loaded_model = mlflow.pyfunc.load_model(model_uri)
+#     # with open("../../model/model.pickle", "rb") as openfile:
+#     #     model1 = pickle.load(openfile)
+#     model_uri = ""
+#     loaded_model = mlflow.pyfunc.load_model(model_uri)
 
 
 @app.get("/health")
