@@ -1,9 +1,10 @@
 version: '3.8'
 services:
   api:
-    build: ./mlops_bootcamp_team10/app
+    restart: always
+    build: ./mlops_bootcamp_team10/api
     ports:
-      - "5050:5050"
+      - "8000:8000"
 
   mlflow:
     restart: always
