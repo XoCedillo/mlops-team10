@@ -37,8 +37,15 @@ lint:
 format:
 	black --config pyproject.toml mlops_bootcamp_team10
 
-
-
+## Download Data from storage system
+.PHONY: sync_data_down
+sync_data_down:
+	dvc pull
+	
+## Upload Data to storage system
+.PHONY: sync_data_up
+sync_data_up:
+	dvc push
 
 ## Set up python interpreter environment
 .PHONY: create_environment
@@ -58,7 +65,7 @@ create_environment:
 ## Make Dataset
 .PHONY: data
 data: requirements
-	$(PYTHON_INTERPRETER) mlops_bootcamp_team10/data/make_dataset.py
+	$(PYTHON_INTERPRETER) mlops_bootcamp_team10/dataset.py
 
 
 #################################################################################
