@@ -10,7 +10,6 @@ from mlops_bootcamp_team10.config import PROCESSED_DATA_DIR
 
 app = typer.Typer()
 
-
 @app.command()
 def main(
     # ---- REPLACE DEFAULT PATHS AS APPROPRIATE ----
@@ -64,6 +63,7 @@ def main(
     x_transformed.to_csv(output_path)
 
     return x_transformed
+
 
 if __name__ == "__main__":
     app()
