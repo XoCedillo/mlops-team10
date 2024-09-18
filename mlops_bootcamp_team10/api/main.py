@@ -1,11 +1,7 @@
-from fastapi import FastAPI, Depends, Security, HTTPException
+from fastapi import FastAPI
 
 # import pickle
 import mlflow
-
-from sklearn.preprocessing import StandardScaler
-from sklearn.pipeline import Pipeline
-from sklearn.base import TransformerMixin, BaseEstimator
 
 app = FastAPI()
 
