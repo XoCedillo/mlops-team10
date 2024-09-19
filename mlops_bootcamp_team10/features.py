@@ -10,6 +10,7 @@ from mlops_bootcamp_team10.config import PROCESSED_DATA_DIR
 
 app = typer.Typer()
 
+
 @app.command()
 def main(
     # ---- REPLACE DEFAULT PATHS AS APPROPRIATE ----
@@ -21,17 +22,17 @@ def main(
     # Read the dataset
     hotel_df = pd.read_csv(input_path)
     # Drop variables that add too much dimensionality or don't have enough data
-    cols_to_drop = ['reservation_status_date', 'country', 'company', 'reservation_status']
+    cols_to_drop = ["reservation_status_date", "country", "company", "reservation_status"]
     hotel_df.drop(columns=cols_to_drop, inplace=True)
     # Handle missing data
-    hotel_df['agent'] = hotel_df['agent'].fillna(hotel_df['agent'].median())
-    hotel_df['children'] = hotel_df['children'].fillna(hotel_df['babies'].median())
+    hotel_df["agent"] = hotel_df["agent"].fillna(hotel_df["agent"].median())
+    hotel_df["children"] = hotel_df["children"].fillna(hotel_df["babies"].median())
     # Split data into X and y
-    x = hotel_df.drop(columns=['is_canceled'])
+    x = hotel_df.drop(columns=["is_canceled"])
 
     # Define categorical and numerical features
-    categorical_features = x.select_dtypes(include=['object']).columns
-    numerical_features = x.select_dtypes(include=['number']).columns
+    categorical_features = x.select_dtypes(include=["object"]).columns
+    numerical_features = x.select_dtypes(include=["number"]).columns
 
     # Define transformers for each feature type
     categorical_transformer = OneHotEncoder()
@@ -40,13 +41,12 @@ def main(
     # Create column transformer to apply transformers to specific columns
     preprocessor = ColumnTransformer(
         transformers=[
-            ('cat', categorical_transformer, categorical_features),
-            ('num', numerical_transformer, numerical_features)
-        ])
+            ("cat", categorical_transformer, categorical_features),
+            ("num", numerical_transformer, numerical_features),
+        ]
+    )
 
-    pipeline = Pipeline([
-        ('preprocessor', preprocessor)
-    ])
+    pipeline = Pipeline([("preprocessor", preprocessor)])
 
     x_transformed = pipeline.fit_transform(x)
 
